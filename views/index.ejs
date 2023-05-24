@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="public/img/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>ServiTools</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Roboto+Condensed&display=swap');
+        *{
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif;
+            text-transform: capitalize;
+            text-decoration: none;
+        }
+        body{
+            min-height: 100vh;
+            background: rgb(222,222,222);
+background: linear-gradient(90deg, rgba(222,222,222,1) 0%, rgba(86,86,86,1) 100%, rgba(19,19,19,1) 100%, rgba(9,9,121,1) 100%, rgba(37,37,37,1) 100%, rgba(118,118,118,1) 100%, rgba(81,81,81,1) 100%, rgba(29,29,29,1) 100%, rgba(250,250,255,1) 100%, rgba(114,114,130,1) 100%, rgba(0,0,0,1) 100%);
+        }
+        header{
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgb(222,222,222);
+background: linear-gradient(90deg, rgba(222,222,222,1) 0%, rgba(19,19,19,1) 0%, rgba(37,37,37,1) 100%, rgba(118,118,118,1) 100%, rgba(81,81,81,1) 100%, rgba(29,29,29,1) 100%, rgba(250,250,255,1) 100%, rgba(114,114,130,1) 100%, rgba(0,0,0,1) 100%, rgba(9,9,121,1) 100%);
+            padding: 0px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        header .logo{
+            font-weight: bolder;
+            font-size: 25px;
+            color:rgb(255, 255, 255);
+            padding-top: 5px;
+        }
+        header .navbar ul{
+            list-style: none;
+
+        }
+        header .navbar ul li{
+            position: relative;
+            float: left;
+            color: #ffffff;
+        }
+        header .navbar ul li a{
+            text-decoration: none;
+            font-size: 20px;
+            padding: 20px;
+            color:rgb(255, 255, 255);
+            display: block;
+        }
+        header .navbar ul li a:hover{
+            background: rgba(255, 255, 255, 0.795);
+            color: rgb(0, 0, 0);
+        }
+        .div1 {
+            float:left;
+            margin-left: 5%;
+            margin-top: 10%;
+            font-size: 24px; 
+        }
+       
+        .sub_title{
+            font-size: 50px;
+            margin-bottom: 0;
+            background: linear-gradient(rgb(0, 17, 114),rgb(1, 1, 32));
+            -webkit-background-clip: text;
+            color: transparent;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        .img1{
+            float: right;
+            padding-top: 10%;
+            margin-right: 5%;
+            margin-left: 0;
+            padding-left: 0;
+            width: 500px;
+        }
+        
+        .div2{
+            float:right;
+            margin-top: 5%;
+            margin-bottom: 10%;
+            padding-right: 4%;
+            font-size: 24px; 
+        }
+        .sub_title1{
+            font-size: 50px;
+            margin-bottom: 0;
+            background: linear-gradient(rgb(0, 17, 114),rgb(1, 1, 32));
+            -webkit-background-clip: text;
+            color: transparent;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        .img2{
+            float: left;
+            padding-top: 5%;
+            padding-left: 5%;
+            width: 550px;
+        }
+        .footer{
+            margin-left: 5%;
+            text-align: center;
+        }
+        hr {
+            clear: both;
+            height: 0;
+            border-bottom: 1px solid #000000;
+            margin: 1px 2px;
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/seleccion"><img class="logo" src="/public/img/logo.png" width="100px" alt=""></a>
+        <nav class="navbar">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a href="/tienda">
+                        <h3>Tienda</h3>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <%if (usuario) { %>
+                        <a href=""><h3><%=  usuario  %>
+                        </h3> </a>
+                        <% } %>                        
+                </li>
+                <li class="nav-item">
+                    <%if (usuario) { %>
+                    <a class="nav-link" href="/logout"><h3>Salir</h3>
+                    </a>
+                    <% } %>
+                </li>
+                <li class="nav-item">
+                    <%if (!usuario) { %>
+                        <a class="nav-link" href="/registro"><h3>Registro</h3>
+                        </a>
+                    <% } %>
+                        
+                </li>
+                <li class="nav-item">
+                    <%if (!usuario) { %>
+                        <a class="nav-link" href="/login"><h3>Iniciar sesión</h3>
+                        </a>
+                    <% } %>                        
+                </li>
+            </ul>      
+        </nav>
+    </header>
+      <div class="clear"></div>
+      <img class="img1"src="/public/img/restaurantes.jpg">
+          <div class="div1">
+              <h2 class="sub_title">!Bienvenidos a ServiTools¡</h2>
+              <p class="paragraph">Una herramienta práctica,
+                  que facilitara el mecanismo de atención <br> al cliente en bares y cafe,
+                  también hará que tu negocio sea más <br> eficiente y cómodo para tus clientes.
+              </p>
+          </div> 
+          <div class="clear"></div> 
+          <img class="img2" src="/public/img/inventario.jpg" >
+          <div class="div2">
+              <h2 class="sub_title1">Inventario Digital</h2>
+              <p class="paragraph">Contamos con un inventario digital, que funciona a tiempo real, <br>
+                  en el que podras gestionar todos los recursos con los que cuenta <br> tu negocio,
+                  esta diseñado para eliminar recursos a medida que <br> estos se consumen o son utilizados,
+                  asi mismo añadir recursos <br> que fueron adquiridos ultimamente.
+              </p>
+          </div> 
+          <div class="clear"></div>
+          <hr>
+          <div class="footer">
+              <p class="paragraph1">© 2023 Todos los derechos reservados: ServiTools</p>
+          </div>
+        
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+          crossorigin="anonymous"></script>
+</body>
+
+</html>

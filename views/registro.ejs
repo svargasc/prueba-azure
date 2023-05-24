@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="public/img/logo.png" type="image/x-icon">
+    <title>Registrarse</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Roboto+Condensed&display=swap');
+        *{
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif;
+            text-transform: capitalize;
+            text-decoration: none;
+        }
+        body{
+            min-height: 100vh;
+            background-image: url(/public/img/menu\ restaurant1.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        header{
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgb(222,222,222);
+background: linear-gradient(90deg, rgba(222,222,222,1) 0%, rgba(19,19,19,1) 0%, rgba(37,37,37,1) 100%, rgba(118,118,118,1) 100%, rgba(81,81,81,1) 100%, rgba(29,29,29,1) 100%, rgba(250,250,255,1) 100%, rgba(114,114,130,1) 100%, rgba(0,0,0,1) 100%, rgba(9,9,121,1) 100%);
+            padding: 0px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        header .logo{
+            font-weight: bolder;
+            font-size: 25px;
+            color:rgb(255, 255, 255);
+            padding-top: 5px;
+        }
+        header .navbar ul{
+            list-style: none;
+
+        }
+        header .navbar ul li{
+            position: relative;
+            float: left;
+        }
+        header .navbar ul li a{
+            font-size: 20px;
+            padding: 20px;
+            color:rgb(255, 255, 255);
+            display: block;
+        }
+        header .navbar ul li a:hover{
+            background: rgba(255, 255, 255, 0.795);
+            color: rgb(0, 0, 0);
+        }
+        .form{
+              background-color: rgba(0, 0, 0, 0.849);
+              margin: auto;
+              margin-top: 10%;
+              width: 90%;
+              max-width: 400px;
+              padding: 3em 3em;
+              border-radius: 10px;
+              box-shadow: 0 5px 10px -5px rgb(0 0 0/ 30%);
+              text-align: center;
+        }
+        .form__title{
+            font-size: 2rem;
+            margin-bottom: .5em;
+            color: #ffffff;
+            font-family: 'Roboto Condensed', sans-serif;
+        }  
+        .form__group{
+              position: relative;
+              --color:#ffffff;
+        }
+        .form__input{
+            width: 100%;
+            background: none;
+            color:#706c6c;
+            font-size: 1rem;
+            padding: 0.6em 0.3em;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid var(--color);
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+        .form__input:not(:placeholder-shown){
+              color: #4d4646;
+        }.form_input:focus + .form_label,
+        .form_input:not(:placeholder-shown) + .form_label{
+            transform: translateY(-12px) scale(.7);
+            transform-origin: left top;
+            color: #3866f2
+        }
+    
+        .form__label{
+            color: var(--color);
+            cursor: pointer;
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            transform: translateY(22px);
+            transition: transform .5s, color .3s;    
+        }
+        .form__submit{
+            background: #73a4ff56;
+            width: 120px;
+            color:rgb(255, 255, 255);
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            padding: .8em 0;
+            border: none;
+            border-radius: .5em;
+            cursor: pointer;
+        }
+        .form__line{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #3866f2;
+            transform: scale(0);
+            transform: left bottom;
+            transition: transform .4s;
+        }
+        .form_input:focus ~ .form_label,
+        .form_input:not(:placeholder-shown) ~ .form_label{
+            transform: scale(1);
+        }
+        @media (max-width:425px){
+            .form__title{
+                font-size: 1.8rem;
+            }
+        }  
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="/public/img/logo.png" width="100px" alt="">
+        <nav class="navbar">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/"><h3>Inicio</h3></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/registro"><h3>Registrarse</h3></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/login"><h3>Iniciar sesión</h3></a>
+                </li>
+            </ul>      
+        </nav>
+    </header>
+    <form action="/registro" method="post" class="form">
+        <h2 class="form__title">Formulario de Registro</h2>
+        <div class="form__container"></div>                    
+            
+            <div class="form__group">                    
+                <input name="nombres" type="text" id="nombre" class="form__input" placeholder="Nombres:" required>
+                <span class="form_line"></span>
+            </div><br>
+
+            <div class="form__group">                    
+                <input name="apellidos" type="text" id="apellido" class="form__input" placeholder="Apellidos:" required>
+                <span class="form_line"></span>
+            </div><br>
+            
+            <div class="form__group">    
+                <input name="usuario" type="text" id="usuario" class="form__input" placeholder="Usuario:" required>
+            </div><br>
+            
+            <div class="form__group">    
+                <input name="contrasena" type="password" id="Contraseña" class="form__input" placeholder="Contraseña:" required>
+                <span class="form_line"></span>
+            </div><br>
+            
+            <div class="form__group">   
+                <input name="correo" type="email" id="Correo" class="form__input" placeholder="Correo:" required><br><br>
+                <span class="form_line"></span>
+            </div><br>         
+
+            <div class="form__group">   
+                <input name="correo" type="email" id="Correo" class="form__input" placeholder="Correo:" required><br><br>
+                <span class="form_line"></span>
+            </div><br>           
+            <input type="submit" class="form__submit" value="Enviar">               
+        </div>   
+     </form>
+</body>
+</html>

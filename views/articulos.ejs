@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tienda Animeshop</title>
+    <link rel="shortcut icon" href="/public/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/public/css/articulo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    
+        <style>
+         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Roboto+Condensed&display=swap');
+        *{
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif;
+            text-transform: capitalize;
+            text-decoration: none;
+        }
+        body{
+            min-height: 100vh;
+            background: rgb(222,222,222);
+            background: linear-gradient(90deg, rgba(222,222,222,1) 0%, rgba(86,86,86,1) 100%, rgba(19,19,19,1) 100%, rgba(9,9,121,1) 100%, rgba(37,37,37,1) 100%, rgba(118,118,118,1) 100%, rgba(81,81,81,1) 100%, rgba(29,29,29,1) 100%, rgba(250,250,255,1) 100%, rgba(114,114,130,1) 100%, rgba(0,0,0,1) 100%);
+        }
+        header{
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgb(222,222,222);
+background: linear-gradient(90deg, rgba(222,222,222,1) 0%, rgba(19,19,19,1) 0%, rgba(37,37,37,1) 100%, rgba(118,118,118,1) 100%, rgba(81,81,81,1) 100%, rgba(29,29,29,1) 100%, rgba(250,250,255,1) 100%, rgba(114,114,130,1) 100%, rgba(0,0,0,1) 100%, rgba(9,9,121,1) 100%);
+            padding: 0px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        header .logo{
+            font-weight: bolder;
+            font-size: 25px;
+            color:rgb(255, 255, 255);
+            padding-top: 5px;
+        }
+        header .navbar ul{
+            list-style: none;
+
+        }
+        header .navbar ul li{
+            position: relative;
+            float: left;
+            color: #ffffff;
+        }
+        header .navbar ul li a{
+            text-decoration: none;
+            font-size: 20px;
+            padding: 20px;
+            color:rgb(255, 255, 255);
+            display: block;
+        }
+        header .navbar ul li a:hover{
+            background: rgba(255, 255, 255, 0.795);
+            color: rgb(0, 0, 0);
+        }
+        
+        button a:hover{
+            color: #ffffff;
+        }
+        button a{
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .articulo{
+            float: left;
+            width: 20%;
+            height: 18%;
+            color: #ffffff;
+            text-align: center;
+            background: #303030;
+            margin-top: 12%;
+            margin-bottom: 2%;
+            margin-left: 4%;
+            margin-right: 0px;
+            padding-right: 0px;
+            
+        }
+        .articulo img{ 
+            margin-top: 4%;
+            width: 96%;
+            height: 350px;
+            margin-bottom: 10px;
+        }
+        .articulo:hover{
+            box-shadow: 0px 0px 10px 5px rgb(87, 87, 87);;
+        }
+        .articulo button{
+            margin-bottom: 4%;
+            width: 120px;
+            font-size: 22px;
+            border-radius: 4px;
+            border: none;
+            background: linear-gradient(rgb(255, 255, 255), rgba(0, 0, 0, 0.575) 30%);
+            
+        }
+        .articulo button:hover{
+            box-shadow: 0px 0px 10px 5px rgb(255, 255, 255);
+        }
+        .enlace{
+            color: #ffffff;
+            text-decoration: none;
+        }
+        </style>
+    </head>
+
+<body>
+    <header>
+        <a href="/seleccion"><img class="logo" src="/public/img/logo.png" width="100px" alt=""></a>
+        <nav class="navbar">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a href="/tienda">
+                        <h3>Tienda</h3>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <%if (usuario) { %>
+                        <a href=""><h3><%=  usuario  %>
+                        </h3> </a>
+                        <% } %>                        
+                </li>
+                <li class="nav-item">
+                    <%if (usuario) { %>
+                    <a class="nav-link" href="/logout"><h3>Salir</h3>
+                    </a>
+                    <% } %>
+                </li>
+                <li class="nav-item">
+                    <%if (!usuario) { %>
+                        <a class="nav-link" href="/registro"><h3>Registro</h3>
+                        </a>
+                    <% } %>
+                        
+                </li>
+                <li class="nav-item">
+                    <%if (!usuario) { %>
+                        <a class="nav-link" href="/login"><h3>Iniciar sesión</h3>
+                        </a>
+                    <% } %>                        
+                </li>
+            </ul>      
+        </nav>
+    </header> 
+    <section>
+        <% for (let i=0; i < articulos.length; i++) { %>
+            <a class="enlace" href="/detalle-producto/<%= articulos[i].codigo %>">
+                <div class="articulo">
+                    <br>
+                    <strong>
+                        <h4><%= articulos[i].nombre %></h4>
+                    </strong>
+                    <img src="<%= articulos[i].urlImagen %>">
+                    <strong>
+                        <h2><%= articulos[i].valor %></h2>
+                    </strong>
+                    
+                </div>
+            </a>
+        <%} %>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+</html>

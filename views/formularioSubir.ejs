@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Añadir productos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Roboto+Condensed&display=swap');
+
+    body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto Condensed', sans-serif;
+      text-transform: capitalize;
+      text-decoration: none;
+      background-image: url(../public/img/pexels-pixabay-531754.jpg);
+      background-repeat: no-repeat;
+    }
+
+    header {
+      top: 0;
+      left: 0;
+      right: 0;
+      background-image: radial-gradient(circle at 11% 37%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 50%,transparent 50%, transparent 56%,transparent 56%, transparent 100%),radial-gradient(circle at 82% 7%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 46%,transparent 46%, transparent 88%,transparent 88%, transparent 100%),radial-gradient(circle at 81% 79%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 33%,transparent 33%, transparent 89%,transparent 89%, transparent 100%),radial-gradient(circle at 68% 96%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 8%,transparent 8%, transparent 26%,transparent 26%, transparent 100%),radial-gradient(circle at 69% 20%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 84%,transparent 84%, transparent 86%,transparent 86%, transparent 100%),radial-gradient(circle at 49% 22%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 71%,transparent 71%, transparent 78%,transparent 78%, transparent 100%),radial-gradient(circle at 23% 60%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 6%,transparent 6%, transparent 40%,transparent 40%, transparent 100%),radial-gradient(circle at 86% 33%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 13%,transparent 13%, transparent 98%,transparent 98%, transparent 100%),radial-gradient(circle at 38% 60%, rgba(79,55,35, 0.18) 0%, rgba(79,55,35, 0.18) 15%,transparent 15%, transparent 61%,transparent 61%, transparent 100%),linear-gradient(0deg, rgb(54,28,10),rgb(54,28,10));
+      padding: 0px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-weight: bolder;
+      font-size: 25px;
+      color: rgb(255, 255, 255);
+      padding-top: 5px;
+    }
+
+    header .navbar ul {
+      list-style: none;
+    }
+
+    header .navbar ul li {
+      position: relative;
+      float: left;
+    }
+
+    header .navbar ul li a {
+      font-size: 20px;
+      padding: 20px;
+      color: rgb(255, 255, 255);
+      display: block;
+      text-decoration: none;
+    }
+
+    header .navbar ul li a:hover {
+      background: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+    }
+    div form{
+      width: 40%;
+      margin-top: 10%;
+      margin-left: 30%;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      background-color: #94572B;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+      margin-bottom: 10px;
+      padding: 12px;
+      color: #000000;
+      background: #ECD295;
+      border: 1px solid #000000;
+      border-radius: 3px;
+      width: 600px;
+    }
+
+    button[type="submit"] {
+      width: 300px;
+      padding: 10px 10px;
+      background-color: #361c0a;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="/"><img class="logo" src="/public/img/logo.png" width="100px" alt=""></a>
+    <nav class="navbar">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a href="/tienda">
+            <h3>Tienda</h3>
+          </a>
+        </li>
+        <li class="nav-item user">
+          <%if (usuario) { %>
+            <a href="">
+              <h3>
+                <%= usuario %>
+              </h3>
+            </a>
+            <% } %>
+        </li>
+        <li class="nav-item">
+          <%if (usuario) { %>
+            <a class="nav-link" href="/logout">
+              <h3>Salir</h3>
+            </a>
+            <% } %>
+        </li>
+        <li class="nav-item">
+          <%if (!usuario) { %>
+            <a class="nav-link" href="/registro">
+              <h3>Registro</h3>
+            </a>
+            <% } %>
+
+        </li>
+        <li class="nav-item">
+          <%if (!usuario) { %>
+            <a class="nav-link" href="/login">
+              <h3>Iniciar sesión</h3>
+            </a>
+            <% } %>
+        </li>
+      </ul>
+    </nav>
+  </header><br><br>
+
+  <div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Escriba nombre del producto:">
+      <input type="text" name="price" placeholder="Escriba el precio del producto:">
+      <input type="file" name="image">
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+</body>
+
+</html>
